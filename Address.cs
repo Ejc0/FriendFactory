@@ -8,17 +8,25 @@ namespace V1UPGF
 {
     public struct Adress
     {
-        public string Streetname { get; set; }
-        public string Zipcode { get; set; }
-        public string City { get; set; }
-        public string Country { get; set; }
+        
+
+        private string Streetname { get; set; }
+        private string Zipcode { get; set; }
+        private string City { get; set; }
+        private string Country { get; set; }
 
         public override string ToString()
         {
-            string adr = Streetname + " " + Zipcode + " " + City + " " + Country;
-            return adr;
+            return Streetname + " " + Zipcode + " " + City + " " + Country;
+            
         }
-
+        public Adress(string streetname, string zipcode, string city, string country)
+        {
+            Streetname = streetname;
+            Zipcode = zipcode;
+            City = city;
+            Country = country;
+        }
 
         public static class Factory
         {
@@ -34,7 +42,8 @@ namespace V1UPGF
                 string zipcode = zipcodes[choice.Next(zipcodes.Length)];
                 string city = cities[choice.Next(cities.Length)];
                 string country = countrynames[choice.Next(countrynames.Length)];
-                string adress = new Adress(streetname, zipcode, city, country);
+
+                var adress = new Adress(streetname, zipcode, city, country);
                 return adress;
             }
         }
@@ -42,5 +51,4 @@ namespace V1UPGF
 
 }
 
-}
-}
+
